@@ -1,0 +1,46 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
+<style>
+    .config-container {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+    }
+    .config-text {
+        font-family: monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    .action-buttons {
+        margin: 20px 0;
+    }
+    .action-buttons a {
+        margin-right: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>Конфигурация WireGuard для {{ peer.user }}</h1>
+    
+    <div class="action-buttons">
+        <a href="{% url 'vpn_bot:download_peer_config' peer.id %}" class="button">Скачать конфиг</a>
+        <a href="{% url 'vpn_bot:view_peer_qr' peer.id %}" class="button" target="_blank">Показать QR-код</a>
+    </div>
+
+    <div class="config-container">
+        <h2>Конфигурация:</h2>
+        <div class="config-text">{{ config }}</div>
+    </div>
+
+    <div class="submit-row">
+        <a href="{% url 'admin:vpn_bot_wireguardpeer_change' peer.id %}" class="button">Вернуться к peer'у</a>
+    </div>
+</div>
+{% endblock %} 
