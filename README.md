@@ -13,7 +13,7 @@
 
 1. Клонируйте репозиторий:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Albobob/vpn_bot
 cd vpn-bot
 ```
 
